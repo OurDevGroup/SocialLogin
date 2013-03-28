@@ -223,8 +223,8 @@
           <config-property key="Transactional" value="false"/>
           <key-binding alias="escape(CurrentRequest.httpProtocol + '://' + CurrentRequest.httpHost + CurrentRequest.httpPath)" key="From_0"/>
           <key-binding alias="RedirectURL" key="To_0"/>
-          <key-binding alias="null" key="From_1"/>
-          <key-binding alias="null" key="To_1"/>
+          <key-binding alias="dw.system.Site.current.preferences.custom.facebook_app_id" key="From_1"/>
+          <key-binding alias="fbAppID" key="To_1"/>
           <key-binding alias="null" key="From_2"/>
           <key-binding alias="null" key="To_2"/>
           <key-binding alias="null" key="From_3"/>
@@ -247,7 +247,7 @@
       <simple-transition/>
       <node>
         <interaction-node transaction-required="false">
-          <template buffered="true" dynamic="false" name="facebook/facebookTestLogin"/>
+          <template buffered="true" dynamic="false" name="facebook/facebookLoginButton"/>
         </interaction-node>
         <node-display orientation="horizontal" x="1" y="0"/>
       </node>

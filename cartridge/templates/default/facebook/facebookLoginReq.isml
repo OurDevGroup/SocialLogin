@@ -8,7 +8,7 @@ function S4() {
 var guid = (S4() + S4() + "-" + S4() + "-4" + S4().substr(0,3) + "-" + S4() + "-" + S4() + S4() + S4()).toLowerCase();
 
 
-var facebookURL = "https://www.facebook.com/dialog/oauth?client_id=" + pdict.fbClientID + "&redirect_uri=" + pdict.fbRedirectURL + "&state=" + guid;
+var facebookURL = "https://www.facebook.com/dialog/oauth?client_id=" + pdict.fbClientID + "&redirect_uri=" + pdict.fbRedirectURL + "&scope=email&state=" + guid;
 </isscript>
 <isredirect location="${facebookURL}" permanent="false">
 
