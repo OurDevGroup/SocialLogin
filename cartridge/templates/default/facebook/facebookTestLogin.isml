@@ -1,7 +1,0 @@
-<!--- TEMPLATENAME: facebookTestLogin.isml --->
-
-<a href="${URLUtils.url('Facebook-Login','redirecturl', pdict.RedirectURL)}">Login to Facebook</a>
-
-<isif condition="${pdict.FirstName != null}">
-Welcome ${pdict.FirstName} ${pdict.LastName} (${pdict.EmailAddress})
-</isif>
