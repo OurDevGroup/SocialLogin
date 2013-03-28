@@ -17,6 +17,7 @@
 *   @output FirstName : String
 *   @output LastName : String
 *   @output EmailAddress : String
+*	@output Login : String
 *
 */
 importPackage( dw.system );
@@ -44,10 +45,22 @@ var fbTokenUrl =  "https://graph.facebook.com/oauth/access_token?client_id=" + a
 	 	var fb = JSON.parse(httpClient.text);
 	 	args.FirstName = fb.first_name;
 	 	args.LastName = fb.last_name;
-	 	var email = fb.email;
-	 	if(!email)
-	 		email = fb.username + "@facebook.com";
-	 	args.EmailAddress = email;
+	 	var email = fb.email;	 		 	
+	 	var login = fb.username + "@facebook.com";
+	 		 
+	 	if(Site.current.preferences.custom.use_facebook_email || !email) {
+	 		args.Login = login;
+	 	} else  {
+	 		args.Login = email;
+	 	}	 	
+	 	
+	 	if(!email) {
+	 		args.EmailAddress = login;
+	 	} else {
+	 		args.EmailAddress = email;
+	 	}	 	
+	 	 
+	 	
 	 }
  }
 
