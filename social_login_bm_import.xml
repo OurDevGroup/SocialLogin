@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xmlns="http://www.demandware.com/xml/impex/metadata/2006-10-31">
+    <type-extension type-id="Profile">
+        <custom-attribute-definitions>
+            <attribute-definition attribute-id="is_social_account">
+                <display-name xml:lang="x-default">Is Social Account</display-name>
+                <description xml:lang="x-default">Indicates whether or an account security is/was being managed by a social media service.</description>
+                <type>boolean</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>true</externally-managed-flag>
+            </attribute-definition>            
+        </custom-attribute-definitions>
+        <group-definitions>           
+            <attribute-group group-id="SocialLogin">
+                <display-name xml:lang="x-default">Social Login</display-name>
+                <attribute attribute-id="is_social_account"/>
+            </attribute-group>
+        </group-definitions>
+    </type-extension>
+
+    <type-extension type-id="SitePreferences">
+        <custom-attribute-definitions>            
+            <attribute-definition attribute-id="use_facebook_email">
+                <display-name xml:lang="x-default">Obfuscate Facebook Social Login</display-name>
+                <description xml:lang="x-default">Determines whether or not to use the user's preferred email address or use the Facebook email address.</description>
+                <type>boolean</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <default-value>false</default-value>
+            </attribute-definition>
+            <attribute-definition attribute-id="facebook_app_id">
+                <display-name xml:lang="x-default">Facebook App ID</display-name>
+                <type>string</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <min-length>0</min-length>
+            </attribute-definition>
+            <attribute-definition attribute-id="facebook_app_secret">
+                <display-name xml:lang="x-default">Facebook App Secret</display-name>
+                <type>string</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <min-length>0</min-length>
+            </attribute-definition>            
+        </custom-attribute-definitions>
+        <group-definitions>          
+            <attribute-group group-id="SocialLogin">
+                <display-name xml:lang="x-default">Social Login Settings</display-name>
+                <attribute attribute-id="facebook_app_secret"/>
+                <attribute attribute-id="facebook_app_id"/>
+                <attribute attribute-id="use_facebook_email"/>
+            </attribute-group>
+        </group-definitions>
+    </type-extension>
+</metadata>

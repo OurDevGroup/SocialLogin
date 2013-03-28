@@ -1,3 +1,3 @@
 <!--- TEMPLATENAME: facebookLoginTestPage.isml --->
 This is a random test page to show that you can put the facebook
-login button anywhere and it'll work <iscomponent pipeline="Facebook-Button"> !!
+login button anywhere and it'll work <iscomponent pipeline="Facebook-Login"> !!

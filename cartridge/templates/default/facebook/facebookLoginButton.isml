@@ -8,4 +8,4 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<span id="fbLogin"><a class="fb_button fb_button_medium" href="${URLUtils.url('Facebook-Login','redirecturl', pdict.RedirectURL)}"><span class="fb_button_text">Login with Facebook</span></a></span>
+<span id="fbLogin"><a class="fb_button fb_button_medium" href="${URLUtils.url('Facebook-CallLogin','redirecturl', pdict.RedirectURL)}"><span class="fb_button_text">Login with Facebook</span></a></span>
