@@ -1,0 +1,45 @@
+  
+<isif condition="${pdict.gReturnURL && pdict.gReturnURL!= null}">
+	<isredirect location="${pdict.gReturnURL}" permanent="false" />
+</isif>
+  
+  
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js">
+  </script>
+  <script type="text/javascript">
+    (function () {
+      var po = document.createElement('script');
+      po.type = 'text/javascript';
+      po.async = false;
+      po.src = 'https://plus.google.com/js/client:plusone.js?onload=start';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(po, s);
+    })();
+  </script>
+  
+  
+<div id="signinButton">
+  <span class="g-signin"
+    data-scope="https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email"
+    data-clientid="${pdict.gClientID}"
+    data-redirecturi="postmessage"
+    data-accesstype="offline"
+    data-cookiepolicy="single_host_origin"
+    data-approvalprompt="force"
+    data-callback="signInCallback">
+  </span>
+</div>
+<div id="result"></div>  
+  
+  
+<script type="text/javascript">
+function signInCallback(authResult) {
+	  if (authResult['code']) {
+	  document.location = "${URLUtils.url("Google-CallLogin")}?code=" + authResult['code'] + "&token=" + authResult["access_token"];
+	  } else if (authResult['error']) {
+
+	  }
+	}
+	</script>
+
+</script>
