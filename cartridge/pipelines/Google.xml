@@ -230,7 +230,7 @@
     <segment>
       <node>
         <start-node name="Login" secure="false"/>
-        <node-display x="4" y="0"/>
+        <node-display x="5" y="0"/>
       </node>
       <simple-transition>
         <transition-display>
@@ -261,11 +261,39 @@
         </pipelet-node>
         <node-display x="0" y="1"/>
       </node>
-      <simple-transition>
+      <simple-transition/>
+      <node>
+        <decision-node condition-key="ReturnURL != null" condition-operator="expr"/>
+        <node-display x="0" y="1"/>
+        <branch basename="b2" source-connector="yes">
+          <transition target-connector="in"/>
+          <segment>
+            <node>
+              <pipelet-node pipelet-name="Eval" pipelet-set-identifier="bc_api">
+                <config-property key="OnError" value="null"/>
+                <config-property key="Transactional" value="false"/>
+                <config-property key="Expression" value="CurrentSession.custom.gReturnURL = ReturnURL"/>
+                <key-binding alias="Result" key="Result"/>
+              </pipelet-node>
+              <node-display x="0" y="1"/>
+            </node>
+            <transition target-connector="in1" target-path="../+1"/>
+          </segment>
+        </branch>
+      </node>
+      <transition target-connector="in1" target-path="./+1">
         <transition-display>
-          <bend-point relative-to="source" x="0" y="1"/>
+          <bend-point relative-to="source" x="1" y="0"/>
+          <bend-point relative-to="target" x="1" y="0"/>
         </transition-display>
-      </simple-transition>
+      </transition>
+    </segment>
+    <segment>
+      <node>
+        <join-node/>
+        <node-display x="0" y="2"/>
+      </node>
+      <simple-transition/>
       <node>
         <interaction-node transaction-required="false">
           <template buffered="true" dynamic="false" name="google/googleLoginButton"/>
@@ -278,7 +306,7 @@
     <segment>
       <node>
         <start-node name="Test" secure="false"/>
-        <node-display x="5" y="0"/>
+        <node-display x="7" y="0"/>
       </node>
       <simple-transition>
         <transition-display>

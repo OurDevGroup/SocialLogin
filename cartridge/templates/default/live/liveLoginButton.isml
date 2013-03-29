@@ -1,0 +1,44 @@
+<!--- TEMPLATENAME: facebookTestLogin.isml --->
+
+<isif condition="${pdict.liveReturnURL && pdict.liveReturnURL!= null}">
+	<isredirect location="${pdict.liveReturnURL}" permanent="false" />
+</isif>
+
+<style>
+.loginButton {
+	position: relative;
+	display: inline-block;
+	height: 22px;
+	padding: 0 1em;
+	border: 1px solid #999;
+	border-radius: 2px;
+	margin: 0;
+	text-align: center;
+	text-decoration: none;
+	line-height: 22px;
+	white-space: nowrap;
+	cursor: pointer;
+	background: #fff;
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+	-webkit-appearance: none;		
+	font: 13px/1.333 "lucida grande", tahoma, sans-serif;
+	color: #333;
+}
+
+.loginButton img {
+	width:16px;
+	height:16px;
+	top:2px;
+	position:relative;
+	margin-right:.5em;
+}
+
+</style>
+
+<isscript>
+var redirectUrl = encodeURIComponent(pdict.RedirectURL); //.replace(' ','%20').replace(':','%3A').replace('/','%2F');
+</isscript>
+
+<a class="loginButton" href="https://login.live.com/oauth20_authorize.srf?client_id=${pdict.liveClientID}&scope=wl.signin%20wl.basic&response_type=code&redirect_uri=${redirectUrl}"><img src="${URLUtils.staticURL('/sociallogin/wllogo.png')}">Sign in with <b>Windows Live ID</b></a>

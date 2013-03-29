@@ -1,0 +1,4 @@
+<isscript>
+var facebookURL = "https://www.facebook.com/dialog/oauth?client_id=" + pdict.fbClientID + "&redirect_uri=" + pdict.fbRedirectURL + "&scope=email&state=" + pdict.CurrentSession.sessionID;
+</isscript>
+<isredirect location="${facebookURL}" permanent="false">

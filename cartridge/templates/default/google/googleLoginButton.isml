@@ -2,8 +2,8 @@
 <isif condition="${pdict.gReturnURL && pdict.gReturnURL!= null}">
 	<isredirect location="${pdict.gReturnURL}" permanent="false" />
 </isif>
-  
-  
+
+<isif condition="${pdict.CurrentRequest.httpProtocol == 'https'}">
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js">
   </script>
   <script type="text/javascript">
@@ -41,5 +41,5 @@ function signInCallback(authResult) {
 	  }
 	}
 	</script>
-
 </script>
+</isif>
