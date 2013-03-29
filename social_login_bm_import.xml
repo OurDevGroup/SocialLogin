@@ -41,7 +41,21 @@
                 <mandatory-flag>false</mandatory-flag>
                 <externally-managed-flag>false</externally-managed-flag>
                 <min-length>0</min-length>
-            </attribute-definition>            
+            </attribute-definition>    
+            <attribute-definition attribute-id="google_client_id">
+                <display-name xml:lang="x-default">Google+ Client ID</display-name>
+                <type>string</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <min-length>0</min-length>
+            </attribute-definition>
+            <attribute-definition attribute-id="google_client_secret">
+                <display-name xml:lang="x-default">Google+ Client Secret</display-name>
+                <type>string</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <min-length>0</min-length>
+            </attribute-definition>                      
         </custom-attribute-definitions>
         <group-definitions>          
             <attribute-group group-id="Social Login">
@@ -49,6 +63,8 @@
                 <attribute attribute-id="facebook_app_secret"/>
                 <attribute attribute-id="facebook_app_id"/>
                 <attribute attribute-id="use_facebook_email"/>
+                <attribute attribute-id="google_client_id"/>
+                <attribute attribute-id="google_client_secret"/>
             </attribute-group>
         </group-definitions>
     </type-extension>
