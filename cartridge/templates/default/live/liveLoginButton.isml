@@ -1,44 +1,67 @@
-<!--- TEMPLATENAME: facebookTestLogin.isml --->
-
-<isif condition="${pdict.liveReturnURL && pdict.liveReturnURL!= null}">
-	<isredirect location="${pdict.liveReturnURL}" permanent="false" />
+<isif condition="${pdict.liveReturnURL && pdict.liveReturnURL!= null}">	
+	<script>window.location.href = '${pdict.liveReturnURL}';</script>
 </isif>
+	
+<script>
+	if(!window.jQuery)
+	{
+	   var script = document.createElement('script');
+	   script.type = "text/javascript";
+	   script.src = "http://code.jquery.com/jquery-latest.pack.js";
+	   document.getElementsByTagName('head')[0].appendChild(script);
+	}
+</script>
+<script src="//js.live.net/v5.0/wl.js" type="text/javascript"></script>
+<script type="text/javascript">
+	var APPLICATION_CLIENT_ID = "${pdict.liveClientID}",
+	REDIRECT_URL = "${pdict.ReturnURL}";
 
-<style>
-.loginButton {
-	position: relative;
-	display: inline-block;
-	height: 22px;
-	padding: 0 1em;
-	border: 1px solid #999;
-	border-radius: 2px;
-	margin: 0;
-	text-align: center;
-	text-decoration: none;
-	line-height: 22px;
-	white-space: nowrap;
-	cursor: pointer;
-	background: #fff;
-	-webkit-box-sizing: content-box;
-	-moz-box-sizing: content-box;
-	box-sizing: content-box;
-	-webkit-appearance: none;		
-	font: 13px/1.333 "lucida grande", tahoma, sans-serif;
-	color: #333;
-}
+	WL.init({
+		client_id: APPLICATION_CLIENT_ID,
+		scope: ["wl.emails"],
+		response_type: "token"
+	});			
+	
+	WL.logout();
+	
+	WL.getLoginStatus(function(response) { if(response.status != "connected" ) WL.Event.subscribe("auth.sessionChange", onSessionChange); });
+	
+	WL.ui({
+		name: "signin",
+		element: "signInButton",
+		display:"page"
+	});
+	
+	var access_token = null;
+	
+	function onSessionChange() {
+		var session = WL.getSession();
+		
+		if (session) {		
+			access_token = session.access_token;
+			//WL.Event.subscribe("auth.logout", onLogout);
+			//WL.logout();		
+			if(access_token)
+				postwith(REDIRECT_URL, {token:session.access_token});
+		}
+	}
+	
+	
+	function postwith (to,p) {		
+		  var myForm = document.createElement("form");
+		  myForm.method="post" ;
+		  myForm.action = to ;
+		  for (var k in p) {
+		    var myInput = document.createElement("input") ;
+		    myInput.setAttribute("name", k) ;
+		    myInput.setAttribute("value", p[k]);
+		    myForm.appendChild(myInput) ;
+		  }
+		  document.body.appendChild(myForm) ;
+		  myForm.submit() ;
+		  document.body.removeChild(myForm) ;
+		}
 
-.loginButton img {
-	width:16px;
-	height:16px;
-	top:2px;
-	position:relative;
-	margin-right:.5em;
-}
+</script>
 
-</style>
-
-<isscript>
-var redirectUrl = encodeURIComponent(pdict.RedirectURL); //.replace(' ','%20').replace(':','%3A').replace('/','%2F');
-</isscript>
-
-<a class="loginButton" href="https://login.live.com/oauth20_authorize.srf?client_id=${pdict.liveClientID}&scope=wl.signin%20wl.basic&response_type=code&redirect_uri=${redirectUrl}"><img src="${URLUtils.staticURL('/sociallogin/wllogo.png')}">Sign in with <b>Windows Live ID</b></a>
+<div id="signInButton"></div>
