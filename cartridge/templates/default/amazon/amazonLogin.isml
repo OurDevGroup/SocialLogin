@@ -1,0 +1,1 @@
+<iscomponent pipeline="Amazon-Login" ReturnURL="${pdict.CurrentRequest.httpProtocol + '://' + pdict.CurrentRequest.httpHost + pdict.CurrentRequest.httpPath + (pdict.CurrentRequest.httpQueryString && pdict.CurrentRequest.httpQueryString.length >0 ? '?' + pdict.CurrentRequest.httpQueryString : '')}">

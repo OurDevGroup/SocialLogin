@@ -1,0 +1,2 @@
+this  is a amazon signin test page<br>
+<isinclude template="amazon/amazonLogin" />
