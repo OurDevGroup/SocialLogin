@@ -17,11 +17,11 @@
 
 </script>
 
-<button id="LoginWithAmazon" style="border:0;background-color:transparent;">
+<div id="LoginWithAmazon" style="border:0;background-color:transparent;">
   <img border="0" href="#" alt="Login with Amazon"
     src="https://images-na.ssl-images-amazon.com/images/G/01/lwa/btnLWA_gold_156x32.png"
     width="156" height="32" />
-</button>
+</div>
 
 <script type="text/javascript">
   document.getElementById('LoginWithAmazon').onclick = function() {
