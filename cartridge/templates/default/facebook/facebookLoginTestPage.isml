@@ -1,4 +1,4 @@
 <!--- TEMPLATENAME: facebookLoginTestPage.isml --->
 This is a random test page to show that you can put the facebook
 login button anywhere and it'll work 
-<isinclude template="facebook/facebookLogin" /> !!
+<isinclude template="facebook/facebookLogin" /> 

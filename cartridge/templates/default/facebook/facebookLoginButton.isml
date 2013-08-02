@@ -1,8 +1,9 @@
 <!--- TEMPLATENAME: facebookTestLogin.isml --->
-
 <isif condition="${pdict.fbReturnURL && pdict.fbReturnURL!= null}">
 	<isredirect location="${pdict.fbReturnURL}" permanent="false" />
 </isif>
+
+<iscomment>
 
 <isif condition="${pdict.CurrentRequest.httpProtocol == 'https'}">
 	<div id="fb-root"></div>
@@ -16,3 +17,38 @@
 
 	<span id="fbLogin"><a class="fb_button fb_button_medium" href="${URLUtils.url('Facebook-CallLogin','redirecturl', pdict.RedirectURL)}"><span class="fb_button_text">Login with Facebook</span></a></span>
 </isif>
+</iscomment>
+
+
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {	 
+    FB.init({
+      appId      : '${pdict.fbAppID}', // App ID     
+      status     : false, 
+      cookie     : true, 
+      xfbml      : true  
+    });
+    
+	  
+  };
+
+
+  
+  // Load the SDK asynchronously
+  if(typeof FB === "undefined") {	  
+  (function(d){
+     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "//connect.facebook.net/en_US/all.jss#xfbml=1&appId=${pdict.fbAppID}";
+     ref.parentNode.insertBefore(js, ref);
+   }(document));
+  }
+  
+  function doDWLogin() {
+	  window.location = "${URLUtils.url('Facebook-CallLogin','redirecturl', pdict.RedirectURL)}";
+  }
+</script>
+
+<fb:login-button show-faces="false" width="200" max-rows="1" onlogin="doDWLogin();"></fb:login-button>
